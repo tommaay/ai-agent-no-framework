@@ -1,0 +1,89 @@
+# Python Multi-Agent System Development Rules
+
+## Code Style & Organization
+
+- Follow PEP 8 style guidelines
+- Use type hints for all functions and variables
+- Organize code into logical modules and packages
+- Use descriptive variable names (e.g., agent_id, message_queue)
+- Keep functions focused and under 50 lines
+- Document all public APIs with docstrings
+- Use loguru for logging
+- Place imports in order: stdlib, third-party, local
+- Use absolute imports with module aliases
+- Follow SOLID principles
+
+## Agent Implementation
+
+- Inherit from AgentBase ABC
+- Implement required abstract methods
+- Use immutable state management
+- Handle messages asynchronously
+- Validate all inputs
+- Log state changes
+- Handle errors gracefully
+- Use dependency injection
+- Implement proper cleanup
+
+## Message System
+
+- Define clear message protocols
+- Validate message content
+- Use queues for async communication
+- Include sender/receiver IDs
+- Add timestamps
+- Handle timeouts
+- Log message flow
+
+## Environment
+
+- Define clear boundaries
+- Track agent states
+- Manage interactions
+- Provide observations
+- Measure metrics
+- Handle concurrent access
+- Maintain consistency
+
+## Error Handling
+
+- Use custom exception classes
+- Validate all inputs
+- Log errors with context
+- Implement recovery mechanisms
+- Handle edge cases
+- Fail fast and explicitly
+
+## Testing
+
+- Write unit tests for all components
+- Test agent interactions
+- Mock external dependencies
+- Test error conditions
+- Use pytest fixtures
+- Maintain high coverage
+
+## Documentation
+
+- Write clear docstrings
+- Document configurations
+- Include examples
+- Maintain changelog
+- Document dependencies
+
+## Performance
+
+- Profile code
+- Optimize hot paths
+- Cache where beneficial
+- Minimize object creation
+- Use appropriate data structures
+- Monitor memory usage
+
+## Logging
+
+- Use structured logging
+- Set appropriate levels
+- Log state changes
+- Track metrics
+- Monitor resources
