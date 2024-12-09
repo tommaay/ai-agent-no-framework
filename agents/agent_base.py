@@ -37,7 +37,7 @@ class AgentBase(ABC):
         if self.verbose:
           logger.info(f"[{self.name}] received response from OpenAi: {reply}")
         return reply
-        except Exception as e:
-          retries += 1
-          logger.error(f"[{self.name}] error sending message to OpenAi: {e}. Retry attempt {retries}/{self.max_retries}")
+      except Exception as e:
+        retries += 1
+        logger.error(f"[{self.name}] error sending message to OpenAi: {e}. Retry attempt {retries}/{self.max_retries}")
     raise Exception(f"Failed to get response from OpenAi after {self.max_retries} retries")
