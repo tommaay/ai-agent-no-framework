@@ -31,7 +31,7 @@ class AgentBase(ABC):
         self.verbose = verbose
 
     @abstractmethod
-    def execute(self, *args: Any, **kwargs: Any) -> Any:
+    async def execute(self) -> Any:
         """
         Execute the agent's main functionality.
         Must be implemented by subclasses.
