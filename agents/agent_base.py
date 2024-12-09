@@ -11,7 +11,6 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 class OpenAIError(Exception):
     """Custom exception for OpenAI-related errors."""
-
     pass
 
 
@@ -32,7 +31,10 @@ class AgentBase(ABC):
 
     @abstractmethod
     def execute(self, *args: Any, **kwargs: Any) -> Any:
-        """Execute the agent's main functionality."""
+        """
+        Execute the agent's main functionality.
+        Must be implemented by subclasses.
+        """
         pass
 
     def call_openai(
