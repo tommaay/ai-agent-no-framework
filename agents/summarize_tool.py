@@ -1,10 +1,13 @@
-from typing import Dict, TypedDict
+"""Tool for summarizing text content using OpenAI's API with error handling and logging."""
+
+from typing import TypedDict
 from loguru import logger
 from openai import OpenAIError
-from .agent_base import AgentBase
+from agents.agent_base import AgentBase
 
 
 class SummaryResponse(TypedDict):
+    """Response type for text summarization containing the summary and length metrics."""
     summary: str
     original_length: int
     summary_length: int
@@ -44,9 +47,9 @@ class SummarizeTool(AgentBase):
         messages = [
             {
                 "role": "system",
-                "content": "You are an AI assistant that creates clear and accurate summaries. "
+                "content":( "You are an AI assistant that creates clear and accurate summaries. "
                 "Focus on the main points while preserving key details. "
-                "Be concise but ensure no critical information is lost.",
+                "Be concise but ensure no critical information is lost."),
             },
             {
                 "role": "user",

@@ -1,8 +1,10 @@
+"""Base class and utilities for AI agents with OpenAI integration."""
+
 from abc import ABC, abstractmethod
-from typing import List, Dict, Any, Optional
-from loguru import logger
+from typing import List, Dict, Any
 import os
-from openai import OpenAI
+from loguru import logger
+from openai import OpenAI, APIError, APIConnectionError, RateLimitError
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -11,7 +13,6 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 class OpenAIError(Exception):
     """Custom exception for OpenAI-related errors."""
-    pass
 
 
 class AgentBase(ABC):
@@ -35,7 +36,6 @@ class AgentBase(ABC):
         Execute the agent's main functionality.
         Must be implemented by subclasses.
         """
-        pass
 
     def call_openai(
         self,
@@ -82,7 +82,7 @@ class AgentBase(ABC):
 
                 return reply
 
-            except Exception as e:
+            except (APIError, APIConnectionError, RateLimitError) as e:
                 retries += 1
                 logger.error(
                     f"[{self.name}] Error calling OpenAI: {str(e)}. "
